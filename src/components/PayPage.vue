@@ -1,0 +1,31 @@
+<template>
+	<div class="pay-page">
+		<GoodsInfoVerify/>
+		<PayWays/>
+	</div>
+</template>
+
+<script>
+	import GoodsInfoVerify from './GoodsInfoVerify'
+	import PayWays from './PayWays'
+	export default {
+		name: "PayPage",
+		props: [],
+		components:{
+			// 商品信息确认组件引用
+			GoodsInfoVerify,
+			// 支付方式组件引用
+			PayWays
+		},
+		data(){
+			return {
+			}
+		}
+	}
+</script>
+
+<!-- Add "scoped" attribute to limit CSS to this component only -->
+<style lang="less">
+
+
+</style>
