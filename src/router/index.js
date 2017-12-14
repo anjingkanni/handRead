@@ -1,24 +1,36 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Classification from '@/components/Classification'
 
-import Bootstrap  from 'bootstrap/dist/css/bootstrap.css'
+import MainContainer from '@/components/MainContainer'
+import Classification from '@/components/Classification'
+import Shoppingcart from '@/components/Shoppingcart'
+import Personal from '@/components/Personal'
+
 
 Vue.use(Router)
 
 export default new Router({
+	mode: 'history',
   routes: [
+    {
+      path: '/',
+      name: 'mainContainer',
+      component: MainContainer
+    },
     {
       path: '/classification',
       name: 'classification',
       component: Classification,
-      // children:[
-      //   {
-      //     path: '/details',
-      //     name: 'details',
-      //     component: Details,
-      //   }
-      // ]
+    },
+    {
+      path: '/shoppingcart',
+      name: 'shoppingcart',
+      component: Shoppingcart
+    },
+    {
+      path: '/personal',
+      name: 'personal',
+      component: Personal
     }
 
   ]

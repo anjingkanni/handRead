@@ -1,18 +1,30 @@
 <template>
-  <div id="app">
-    <!--<header>-->
-      <!--<ul>-->
-        <!--<li>分类</li>-->
-      <!--</ul>-->
-    <!--</header>-->
-    <main>
-      <router-view/>
-    </main>
-    <footer>
-      <ul>
-        <router-link :to="{name: 'classification'}" tag="li" exact>类别</router-link>
-      </ul>
-    </footer>
+    <div id="app">
+      <main>
+        <router-view/>   
+      </main>
+      <footer>
+            <nav>
+              <ul>
+                <router-link :to="{name:'mainContainer'}" tag="li" exact >
+                  <p class="fa fa-home"></p>
+                  <p>首页</p>
+                </router-link>
+                <router-link :to="{name:'classification'}" tag="li" >
+                  <p class="fa fa-sitemap"></p>
+                  <p>分类</p>
+                  </router-link>
+                <router-link :to="{name:'shoppingcart'}" tag="li">
+                  <p class="fa fa-shopping-cart"></p>
+                  <p>购物车</p>
+                </router-link>
+                <router-link :to="{name:'personal'}" tag="li">
+                  <p class="fa fa-user"></p>
+                  <p>我</p>
+                </router-link>
+              </ul>
+            </nav>
+     </footer>
   </div>
 </template>
 
@@ -23,5 +35,6 @@ export default {
 </script>
 
 <style lang="less">
-@import "styles/common.less";
+  @import "./styles/index.less";
+  @import './styles/common.less';
 </style>
