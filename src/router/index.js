@@ -1,9 +1,11 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+
 import MainContainer from '@/components/MainContainer'
-import Classify from '@/components/Classify'
+import Classification from '@/components/Classification'
 import Shoppingcart from '@/components/Shoppingcart'
 import Personal from '@/components/Personal'
+
 
 Vue.use(Router)
 
@@ -16,9 +18,9 @@ export default new Router({
       component: MainContainer
     },
     {
-      path: '/classify',
-      name: 'classify',
-      component: Classify
+      path: '/classification',
+      name: 'classification',
+      component: Classification,
     },
     {
       path: '/shoppingcart',
@@ -30,5 +32,6 @@ export default new Router({
       name: 'personal',
       component: Personal
     }
+
   ]
 })
