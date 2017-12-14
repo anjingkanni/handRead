@@ -3,6 +3,9 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import swiper from 'swiperCss'
+import BootstrapCSS from 'bootcss'
+import $  from 'jquery'
 
 Vue.config.productionTip = false
 

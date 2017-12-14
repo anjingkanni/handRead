@@ -28,6 +28,7 @@
     </footer>
   </main>
 
+
 </template>
 
 <script>
@@ -36,8 +37,8 @@ export default {
 }
 </script>
 
+
 <style lang="less">
   @import "./styles/index.less";
-
-
+  @import './styles/common.less';
 </style>

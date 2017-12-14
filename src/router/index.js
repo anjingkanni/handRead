@@ -1,17 +1,19 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from '@/components/Home'
+import MainContainer from '@/components/MainContainer'
 import Classify from '@/components/Classify'
 import Shoppingcart from '@/components/Shoppingcart'
 import Personal from '@/components/Personal'
+
 Vue.use(Router)
 
 export default new Router({
+	mode: 'history',
   routes: [
     {
       path: '/',
-      name: 'home',
-      component: Home
+      name: 'mainContainer',
+      component: MainContainer
     },
     {
       path: '/classify',
