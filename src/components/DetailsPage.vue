@@ -1,5 +1,5 @@
 <template>
-  <div>
+<transition name="slide-fade">
   <div class="details" v-show="isShowDetails" :class="{'left':leftSetting}">
     <section>
       <div>
@@ -31,8 +31,10 @@
         <h3>{{book.name}}</h3>
       </div>
       <div>
-        <button type="button">加入购物车</button>
-        <button type="button">立即购买</button>
+	  <button type="button" @click="addToCart(book)">加入购物车</button>
+	  <router-link :to="{name:'shoppingcart'}" tag="li">
+		  <button type="button" @click="addToCart(book)">立即购买</button>
+	  </router-link>
       </div>
     </section>
 
@@ -66,7 +68,7 @@
       </div>
     </section>
   </div>
-  </div>
+</transition>
 </template>
 
 <script>
@@ -75,9 +77,19 @@ export default {
   props:['isShowDetails','leftSetting','book'],
   data () {
     return {
-
+	 objData:[],
+		show:true
     }
-  }
+  },
+	methods:{
+      /*将购车数据存入本地*/
+		addToCart(book){
+			book.num = 1;
+			this.objData.push(book);
+			const locaShop = JSON.stringify(this.objData);
+			localStorage.setItem('locaShop',locaShop);
+		}
+	}
 }
 </script>
 

@@ -14,8 +14,8 @@
 		  @addOneBook="addOneBook"
 		  :bookCount="bookCount"
 		  @subtractOneBook="subtractOneBook"
+		  @addToCart="addToCart"
 	  />
-	  <PayPage/>
   </div>
 </template>
 

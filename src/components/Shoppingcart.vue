@@ -13,9 +13,9 @@
               <p class="price">￥ 99</p>
             </div>
             <div class="regulation">
-              <span @click="reduce">-</span>
+              <span >-</span>
               <span>{{numbers}}</span>
-              <span @click="increases">+</span>
+              <span>+</span>
             </div>
           </li>
           <li >
@@ -51,31 +51,33 @@
         </ul>
       </section>
 
+    <button type="button" class="btn color-green" @click="payShopping">前往支付</button>
 
-    <button type="button" class="btn color-green">前往支付</button>
+	  <!--支付组件-->
+	  <PayPage :shopHide="shopHide"></PayPage>
 </div>
 </template>
 
 <script>
+
+import PayPage from './PayPage'
+
 export default {
   name: 'shopping',
+	components:{PayPage},
   data () {
     return {
       msg: '购物车',
-      numbers: 2
+      numbers: 2,
+		//支付页面显示器
+	  shopHide:false
     }
   },
   methods:{
-    reduce:function () {
-      if(this.numbers >0){
-        this.numbers = this.numbers - 1;
-      }else {
-          return;
-      }
-    },
-    increases:function () {
-      this.numbers = this.numbers + 1;
-    }
+	  //前往支付
+	  payShopping(){
+        this.shopHide = true
+	  }
   }
 }
 </script>
