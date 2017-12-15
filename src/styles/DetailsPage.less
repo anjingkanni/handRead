@@ -37,6 +37,7 @@ div{
         position: absolute;
         p{
           position: relative;
+		  margin-bottom: 6%;
           span:first-child{
             color: rgb(134, 134, 134);
           }
@@ -80,13 +81,18 @@ div{
           background: none;
           border-radius: 15px;
         }
-        button:last-child{
-          background: rgb(51, 153, 51);
-          color: #fff;
-          &:hover{
-            background: rgba(51, 153, 51, 0.77);
-          }
-        }
+	  li{
+		  width:46% ;
+		  button{
+			  padding: 6%;
+			  width: 100%;
+			  background: rgb(51, 153, 51);
+			  color: #fff;
+			  &:hover{
+				  background: rgba(51, 153, 51, 0.77);
+			  }
+	  		}
+ 		 }
       }
     }
     section:nth-child(2){
@@ -125,4 +131,15 @@ div{
   }
 }
 
+.slide-fade-enter-active {
+	transition: all .5s ease;
+}
+.slide-fade-leave-active {
+	transition: all .5s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+}
+.slide-fade-enter, .slide-fade-leave-to
+	/* .slide-fade-leave-active for below version 2.1.8 */ {
+	//transform: translateX(10px);
+	opacity: 0;
+}
 

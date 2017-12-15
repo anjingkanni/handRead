@@ -15,17 +15,21 @@
 			  @electSplices="electSplices"
 		  >
 		  </shoppingList>
-      </section>
-
-    <button type="button" class="btn color-green">前往支付</button>
+       </section>
+   <button type="button" class="btn color-green" @click="payShopping">前往支付</button>
+   
+    <!--支付组件-->
+	  <PayPage :shopHide="shopHide"></PayPage>
 </div>
 </template>
 
 <script>
 import shoppingList from './ShoppingList'
+import PayPage from './PayPage'
+
 export default {
   name: 'shopping',
-	components:{shoppingList},
+	components:{PayPage,shoppingList},
   data () {
     return {
       msg: '购物车',
@@ -42,6 +46,8 @@ export default {
       numbers: 2,
 	  objdatashopping:null,
 	  idx:[],
+    //支付页面显示器
+	  shopHide:false
     }
   },
   methods:{
@@ -68,10 +74,6 @@ export default {
 
 	  },
 	  /*点击选中单品*/
-//	  elect(){
-//		  this.electsShow = !this.electsShow;
-////		  this.electsHide = !this.electsHide;
-//	  },
 	  electSplices(idx){
 	      this.idx.push(idx);
 	  },
@@ -80,7 +82,12 @@ export default {
 	      if(objdatashop.length != 0){
 			  this.objdatashopping = objdatashop;
 		  }else {
-	          return;
+	        return;
+		  }  
+	  //前往支付
+	  payShopping(){        
+      this.shopHide = true
+	  }
 		  }
 	  },
 	  mounted(){
