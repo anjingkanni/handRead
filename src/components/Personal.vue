@@ -59,7 +59,6 @@
   import SetInAndSetUp from './SetInAndSetUp'
 export default {
   name: 'personal',
-
   components:{PersonalData,ReceivingAddress,SetInAndSetUp},
   data () {
     return {
