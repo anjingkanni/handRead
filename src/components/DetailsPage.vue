@@ -1,6 +1,5 @@
 <template>
-  <div>
-  <div class="details" v-show="isShowDetails" :class="{'left':leftSetting}">
+  <div class="details" v-if="isShowDetails" :class="{'left':leftSetting}">
     <section>
       <div>
         <img :src="book.img">
@@ -65,7 +64,6 @@
         </div>
       </div>
     </section>
-  </div>
   </div>
 </template>
 

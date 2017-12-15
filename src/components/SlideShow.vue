@@ -1,5 +1,5 @@
 <template>
-    <header>
+    <div class="slide-show">
 		<div class="swiper-container" id="slide-img">
 			<div class="swiper-wrapper">
 				<div class="swiper-slide">
@@ -31,7 +31,7 @@
 				</div>
 			</div>
 		</div>
-    </header>
+    </div>
 </template>
 
 <script>
