@@ -1,6 +1,6 @@
 <template>
 <transition name="slide-fade">
-  <div class="details" v-show="isShowDetails" :class="{'left':leftSetting}">
+  <div class="details" v-if="isShowDetails" :class="{'left':leftSetting}">
     <section>
       <div>
         <img :src="book.img">
