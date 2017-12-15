@@ -1,6 +1,6 @@
 <template>
   <div class="shopping">
-     <h2 v-if="edits" @click="editor">编辑</h2>
+    <h2 v-if="edits" @click="editor">编辑</h2>
 	  <div v-if="cancel" class="deleting">
 		  <h2 @click="cancels">取消</h2>
 		  <h2 @click="deleteSelected">删除选中</h2>
@@ -15,12 +15,10 @@
 			  @electSplices="electSplices"
 		  >
 		  </shoppingList>
-
-      </section>
-
-    <button type="button" class="btn color-green" @click="payShopping">前往支付</button>
-
-	  <!--支付组件-->
+       </section>
+   <button type="button" class="btn color-green" @click="payShopping">前往支付</button>
+   
+    <!--支付组件-->
 	  <PayPage :shopHide="shopHide"></PayPage>
 </div>
 </template>
@@ -46,14 +44,14 @@ export default {
 	  electsShow:false,
 	  electsHide:true,
       numbers: 2,
-       objdatashopping:null,
+	  objdatashopping:null,
 	  idx:[],
-		//支付页面显示器
+    //支付页面显示器
 	  shopHide:false
     }
   },
   methods:{
-  	 /*点击编辑*/
+      /*点击编辑*/
 	  editor(){
 	      this.cancel = true;
 		  this.edits = false;
@@ -84,12 +82,17 @@ export default {
 	      if(objdatashop.length != 0){
 			  this.objdatashopping = objdatashop;
 		  }else {
-	          return;
+	        return;
 		  }  
 	  //前往支付
-	  payShopping(){        this.shopHide = true
+	  payShopping(){        
+      this.shopHide = true
 	  }
-
+		  }
+	  },
+	  mounted(){
+	      this.getData()
+	  }
   }
 }
 </script>

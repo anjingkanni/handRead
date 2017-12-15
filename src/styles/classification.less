@@ -1,24 +1,13 @@
 div{
+	overflow-y:auto;
+	overflow-x: hidden;
+	height: calc(~"100% - 100px");
   @height:50px;
-  header{
-    text-align: center;
-    height: @height;
-    background: rgb(40,40,40);
-    color: #fff;
-    line-height: @height;
-
-    z-index: 10;
-
-    position: fixed;
-    top: 0;
-    right: 0;
-    left: 0;
-  }
   .classification{
     @height:40px;
     @heights:100%;
     @widths:100%;
-    margin-top: 50px;
+   /* margin-top: 50px;*/
     padding: 4%;
     section{
       width: 100%;

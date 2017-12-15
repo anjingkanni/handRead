@@ -1,8 +1,8 @@
 <template>
     <div id="app">
-	<HeaderComp/>
+		    <HeaderComp/>
         <router-view/>
-    	<FooterComp/>
+      	<FooterComp/>
   </div>
 </template>
 
@@ -19,6 +19,5 @@ export default {
 </script>
 
 <style lang="less">
- 
   @import './styles/common.less';
 </style>
