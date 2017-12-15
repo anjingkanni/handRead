@@ -7,29 +7,29 @@
       </h1>
       <form action="">
         <div>
-          <label for="">昵称</label>
+          <label>昵称</label>
           <input type="text" placeholder="热巴">
         </div>
         <div>
-          <label for="">E-mail</label>
+          <label>E-mail</label>
           <input type="text" placeholder="请填写你的安全邮箱">
         </div>
         <div class="gender">
           <label>性别</label>
-          <span>男</span>
-          <span>女</span>
-          <span class="color-lgtgreen">保密</span>
+          <span :class="{'color-lgtgreen':menShow}" @click="maleSwitch">男</span>
+          <span :class="{'color-lgtgreen':womenShow}" @click="femaleSwitch">女</span>
+          <span :class="{'color-lgtgreen':secrecy}" @click="secrecys">保密</span>
         </div>
         <div>
-          <label for="">生日</label>
+          <label>生日</label>
           <input type="date" class="birthday">
         </div>
         <div>
-          <label for="">身份证号</label>
+          <label>身份证号</label>
           <input type="text" placeholder="请输入您的18位身份证号" >
         </div>
         <div class="version">
-          <label for="">个人描述</label>
+          <label >个人描述</label>
           <textarea type="text" placeholder="请谈谈你对自己的认识"></textarea>
         </div>
         <button type="button" class="modify" @click="$emit('personbtn')">确认</button>
@@ -52,15 +52,27 @@ export default {
   data () {
     return {
       msg: '首页',
-
+	  menShow:false,
+	  womenShow:false,
+	  secrecy:true
     }
 },
 methods:{
-
-//  modifybtn:function () {
-//      this.show = true
-//  }
-
+	maleSwitch(){
+		this.menShow = true;
+	    this.womenShow = false;
+	    this.secrecy = false
+	},
+	femaleSwitch(){
+		this.menShow = false;
+		this.womenShow = true;
+		this.secrecy = false
+	},
+	secrecys(){
+		this.menShow = false;
+		this.womenShow = false;
+		this.secrecy = true
+	}
 }
 }
 </script>

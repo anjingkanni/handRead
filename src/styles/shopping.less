@@ -2,14 +2,31 @@
 div.shopping{
   height:100%;
   background: #f2f2f2;
-  h2{
+   .h2Pattern(){
+		font-weight:normal;
+		padding-right:7px;
+		text-align: right;
+		font-size:16px;
+		line-height: 40px;
+	}
+  &>h2{
+    .h2Pattern;
     color: #2b7faa;
-    text-align: right;
-    font-size:16px;
-    line-height: 40px;
-    font-weight:normal;
-    padding-right:7px;
+	&:first-child{
+		width:40px;
+		margin-left: 300px;
+	}
   }
+	.deleting{
+	 .h2Pattern;
+	 h2{
+		 .h2Pattern;
+		display: inline-block;
+		 &:last-child{
+			 color: #fc6735;
+		 }
+	 }
+	}
   section{
     ul{
       padding:0 7px;
@@ -19,14 +36,45 @@ div.shopping{
       height: 120px;
       position: relative;
       border-bottom: 1px solid #d7d7d7;
+
       &>div{
         display: inline-block;
         margin-top: 10px;
         margin-right: 7px;
+	    &.dots{
+			margin:0 0 0 5px;
+			position: absolute;
+			left: 5px;
+			top: 50%;
+			transform: translate(0, -50%);
+			div{
+				width: 20px;
+				height: 20px;
+				border-radius: 50%;
+			}
+			.dotsShow{
+				border: 1px solid #000000;
+				color: #fff;
+			}
+			.dotsHide{
+				background: #0099cc;
+				border-radius: 50%;
+				text-align: center;
+				span{
+					color: #fff;
+					display: inline-block;
+				}
+			}
+		}
         &.img-show,&.img-show >img{
           width: 78px;
           height: 100px;
         }
+	    &.img-show{
+			&.edting {
+				margin-left: 30px;
+			}
+	    }
       }
       .content-details{
         width:calc(~"100% - 102px");

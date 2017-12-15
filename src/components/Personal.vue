@@ -55,7 +55,6 @@
   import ReceivingAddress from './ReceivingAddress'
 export default {
   name: 'personal',
-
   components:{PersonalData,ReceivingAddress},
   data () {
     return {
