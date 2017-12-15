@@ -1,6 +1,4 @@
 <template>
-  <div >
-    <headers   @hide="hide" :returnicon="returnicon" :titles="titles" :optionicon="optionicon"></headers>
     <div class="classification">
         <!--搜索框-->
         <section>
@@ -39,18 +37,14 @@
         :book="detailsPage"
       />
     </div>
-
-  </div>
 </template>
 
 <script>
 import detailsPage from './DetailsPage'
-import headers from './Header'
 export default {
   name: 'Classification',
   components: {
     detailsPage,
-    headers
   },
   data () {
     return {

@@ -11,9 +11,7 @@ export default {
     // 首页书籍推荐部分
 	  IndexReco,
     // 书籍查看部分
-	  BookDetailsPage,
-	  // 测试支付界面引用
-	  PayPage
+	  BookDetailsPage
   },
   data() {
     return {
@@ -168,7 +166,7 @@ export default {
 		},
 		hiddenPage(){
 			this.isDetails=false;
-			$("body,html").css({'overflow-x':'hidden',"overflow-y":"auto"});
+			$("body,html").css({'overflow':'hidden'});
 		},
 		addOneBook(){
 			this.bookCount++;

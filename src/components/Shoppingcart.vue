@@ -51,7 +51,6 @@
         </ul>
       </section>
 
-
     <button type="button" class="btn color-green">前往支付</button>
 </div>
 </template>

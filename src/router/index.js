@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
-import MainContainer from '@/components/MainContainer'
+import Home from '@/components/Home'
 import Classification from '@/components/Classification'
 import Shoppingcart from '@/components/Shoppingcart'
 import Personal from '@/components/Personal'
@@ -14,8 +14,8 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'mainContainer',
-      component: MainContainer
+      name: 'home',
+      component: Home
     },
     {
       path: '/classification',

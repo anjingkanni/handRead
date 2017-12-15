@@ -47,16 +47,20 @@
     </PersonalData>
     <ReceivingAddress :isShowaddress="isShowaddress" @hides="hides" @modifybtn="modifybtn" :shows="shows">
     </ReceivingAddress>
+	  <SetInAndSetUp
+
+	  ></SetInAndSetUp>
   </div>
 </template>
 
 <script>
   import PersonalData from './PersonalData'
   import ReceivingAddress from './ReceivingAddress'
+  import SetInAndSetUp from './SetInAndSetUp'
 export default {
   name: 'personal',
 
-  components:{PersonalData,ReceivingAddress},
+  components:{PersonalData,ReceivingAddress,SetInAndSetUp},
   data () {
     return {
       msg: '个人中心',

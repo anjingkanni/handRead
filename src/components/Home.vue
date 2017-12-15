@@ -1,19 +1,33 @@
 <template>
-
+  <div class="main">
+	  <SlideShow
+		  :slide-img="slideImgs"
+	  />
+	  <IndexReco
+		  :new-book-list="recoBook"
+		  @enterPage="enterPage"
+	  />
+	  <BookDetailsPage
+		  :book-details-info="bookDetails"
+		  :is-details="isDetails"
+		  @hiddenPage="hiddenPage"
+		  @addOneBook="addOneBook"
+		  :bookCount="bookCount"
+		  @subtractOneBook="subtractOneBook"
+	  />
+  </div>
 </template>
 
-<script>
-export default {
-  name: 'personal',
-  data () {
-    return {
-      msg: '首页'
-    }
-  }
-}
-</script>
+<script src="../scripts/main-container.js"></script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped lang="less">
-  @import "../styles/home.less";
+<style lang="less" scoped>
+	div.main {
+		position: relative;
+		margin: 0;
+		padding: 0;
+		overflow-y:auto;
+		overflow-x: hidden;
+		height: calc(~"100% - 100px");
+	}
 </style>

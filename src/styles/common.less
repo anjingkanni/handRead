@@ -7,19 +7,14 @@
 	box-sizing: border-box;
 }
 html,body {
-	min-height: 100%;
-  width: 100%;
-  height: 100%;
-	font: 20px 'Avenir', Helvetica, "Microsoft YaHei", Arial, sans-serif;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 	margin: 0; padding: 0;
-	overflow-y: auto;
-	overflow-x: hidden;
+	height: 100%;
 }
 body {
 	z-index: 1;
-	overflow-y: scroll;
+	overflow: hidden;
 }
 header,body,p,h1,h2,h3,h4,h5,h6,ul,li {
 	margin: 0;
@@ -36,23 +31,18 @@ input, select, textarea, button {
 
 #app {
 	padding-bottom: 0;
-  height: 100%;
-  @height:50px;
-  header,footer{
-    height: @height;
-    background: rgb(40,40,40);
-    color: #fff;
-    line-height: @height;
-
-    z-index: 10;
+	height: 100%;
+	@height: 50px;
+	header, footer {
+		height: @height;
+		background: rgb(40, 40, 40);
+		color: #fff;
+		line-height: @height;
+		z-index: 10;
+	}
 }
-   main{
-    overflow-x: hidden;
-    overflow-y: auto;
-    height: calc(~'100% - 50px');
-  }
 ::-webkit-scrollbar {
-	width: 10px;
+	width: 8px;
 	border-radius: 5px;
 }
 ::-webkit-scrollbar-track {
@@ -70,7 +60,7 @@ input, select, textarea, button {
 	background-color: gray;
 }
 @font-face {
-	font-family: 'iconfont';  /* project id 377925 */
+	font-family: 'iconfont';
 	src: url('//at.alicdn.com/t/font_377925_0fxzvg1n55ng66r.eot');
 	src: url('//at.alicdn.com/t/font_377925_0fxzvg1n55ng66r.eot?#iefix') format('embedded-opentype'),
 	url('//at.alicdn.com/t/font_377925_0fxzvg1n55ng66r.woff') format('woff'),

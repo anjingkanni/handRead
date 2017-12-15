@@ -36,13 +36,8 @@ export default {
     background: rgb(40,40,40);
     color: #fff;
     line-height: @height;
-
     z-index: 10;
 
-    position: fixed;
-    top: 0;
-    right: 0;
-    left: 0;
     ul{
       li{
         position: relative;
