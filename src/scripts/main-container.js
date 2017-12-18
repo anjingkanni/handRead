@@ -1,11 +1,15 @@
 import SlideShow from '@/components/SlideShow'
 import IndexReco from '@/components/IndexReco'
 import BookDetailsPage from '@/components/BookDetailsPage'
+import HeaderComp from '@/components/HeaderComp'
+
 
 
 export default {
   name: "MainContainer",
   components: {
+  	// header部分
+	  HeaderComp,
     // header轮播图部分
     SlideShow,
     // 首页书籍推荐部分
@@ -152,7 +156,10 @@ export default {
 		],
 		isDetails:false,
 		bookCount:1,
-
+		//header
+		returnicon: false,
+		titles: '掌上书城',
+		optionicon: false,
 		//存值对象
 		objData:[]
     };

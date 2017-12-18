@@ -1,10 +1,6 @@
 <template>
   <transition name="slide-fade">
-    <article v-show="isShowpersona">
-      <h1>
-        <span class="fa fa-angle-left" ></span>
-        个人资料修改
-      </h1>
+    <article v-show="isShowpersona" class="fa fa-angle-left">
       <form action="">
         <div>
           <label>昵称</label>

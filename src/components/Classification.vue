@@ -1,5 +1,10 @@
 <template>
     <div class="classification">
+		<HeaderComp
+			:returnicon="returnicon"
+			:titles="titles"
+			:optionicon="optionicon"
+		/>
         <!--搜索框-->
         <section>
             <label>
@@ -40,10 +45,12 @@
 </template>
 
 <script>
+import HeaderComp from './HeaderComp'
 import detailsPage from './DetailsPage'
 export default {
   name: 'Classification',
   components: {
+	  HeaderComp,
     detailsPage,
   },
   data () {
@@ -61,11 +68,10 @@ export default {
       moreDisplay: true,
       //详情数据
       detailsPage: [],
-
-      //header
-      returnicon: false,
-      titles: '分类',
-      optionicon: false
+		//header
+		returnicon: false,
+		titles: '分类',
+		optionicon: false,
     }
   },
 

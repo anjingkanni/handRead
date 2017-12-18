@@ -440,7 +440,7 @@
 					"registerName": this.registerName,
 					"password": this.registerPsd,
 				};
-				if (!(this.registerStatus == [true,true,true,true])) {
+				if (!(this.registerStatus[0] === true && this.registerStatus[1] === true && this.registerStatus[2] === true && this.registerStatus[3] === true)) {
 					alert("请完善注册信息！")
 				} else {
 					addUser("users", user, function () {

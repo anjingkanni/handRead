@@ -1,5 +1,10 @@
 <template>
   <div class="personal">
+	  <HeaderComp
+		  :returnicon="returnicon"
+		  :titles="titles"
+		  :optionicon="optionicon"
+	  />
     <section class="img-box">
       <div></div>
       <div>
@@ -54,12 +59,13 @@
 </template>
 
 <script>
+	import HeaderComp from './HeaderComp'
   import PersonalData from './PersonalData'
   import ReceivingAddress from './ReceivingAddress'
   import SetInAndSetUp from './SetInAndSetUp'
 export default {
   name: 'personal',
-  components:{PersonalData,ReceivingAddress,SetInAndSetUp},
+  components:{PersonalData,ReceivingAddress,SetInAndSetUp,HeaderComp},
   data () {
     return {
       msg: '个人中心',
@@ -69,6 +75,10 @@ export default {
       /*弹出框*/
       personshows:false,
       shows:false,
+		//header
+		returnicon: false,
+		titles: '个人中心',
+		optionicon: false,
     }
   },
   methods:{

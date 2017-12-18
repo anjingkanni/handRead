@@ -1,5 +1,10 @@
 <template>
 	<div class="shopping">
+		<HeaderComp
+			:returnicon="returnicon"
+			:titles="titles"
+			:optionicon="optionicon"
+		/>
 		<h2 v-if="edits" @click="editor">编辑</h2>
 		<div v-if="cancel" class="deleting">
 			<h2 @click="cancels">取消</h2>
@@ -15,9 +20,9 @@
 				:objdatashopping="objdatashopping"
 
 			>
-				<oppingList>
-					<ction>
-						<button type="button" class="btn color-green" @click="payShopping">前往支付<tton>
+			</shoppingList>
+					</section>
+						<button type="button" class="btn color-green" @click="payShopping">前往支付</button>
 
 							<!--支付组件-->
 							<PayPage :shopHide="shopHide"></PayPage>
@@ -27,10 +32,11 @@
 <script>
 	import shoppingList from './ShoppingList'
 	import PayPage from './PayPage'
+	import HeaderComp from './HeaderComp'
 
 	export default {
 		name: 'shopping',
-		components:{PayPage,shoppingList},
+		components:{PayPage,shoppingList,HeaderComp},
 		data () {
 			return {
 				msg: '购物车',
@@ -48,6 +54,10 @@
 				arrNew:[],
 				//支付页面显示器
 				shopHide:false,
+				//header
+				returnicon: false,
+				titles: '购物车',
+				optionicon: false,
 			}
 		},
 		methods:{
@@ -104,7 +114,7 @@
 			},
 			//前往支付
 			payShopping(){
-				this.shopHide = true
+				this.shopHide = true;
 			}
 		},
 		mounted(){

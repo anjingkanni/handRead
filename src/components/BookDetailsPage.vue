@@ -33,7 +33,7 @@
 				<div class="middle-content">
 					<p class="book-name">{{bookDetailsInfo.name}}</p>
 					<p class="book-describe">{{bookDetailsInfo.describe}}</p>
-				</div>R
+				</div>
 			</div>
 			<div class="price-num">
 				<p class="book-price">￥:{{(bookDetailsInfo.price * bookCount).toFixed(2)}}</p>

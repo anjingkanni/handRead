@@ -1,5 +1,6 @@
 <template>
 	<div class="pay-page" v-if="shopHide">
+
 		<GoodsInfoVerify/>
 		<PayWays/>
 	</div>
@@ -10,7 +11,7 @@
 	import PayWays from './PayWays'
 	export default {
 		name: "PayPage",
-		props: ['shopHide'],
+		props: ['shopHide','judgeBack'],
 		components:{
 			// 商品信息确认组件引用
 			GoodsInfoVerify,
@@ -19,6 +20,10 @@
 		},
 		data(){
 			return {
+				//header
+				returnicon: true,
+				titles: '分类',
+				optionicon: false
 			}
 		}
 	}
@@ -27,9 +32,16 @@
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="less">
 .pay-page{
-	position: absolute;
+	width: 100%;
+	margin: 0 0 0 0;
+	z-index: 10;
+	overflow-y:auto;
+	overflow-x: hidden;
+	height: calc(~"100% - 50px");
+	position: fixed;
 	left: 0;
-	top: 0;
+	top: 52px;
+	bottom: 0;
 	background: #fff;
 }
 

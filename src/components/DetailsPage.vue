@@ -1,6 +1,8 @@
 <template>
 <transition name="slide-fade">
-  <div class="details" v-if="isShowDetails" :class="{'left':leftSetting}">
+
+  <div class="details fa fa-angle-left" v-if="isShowDetails" :class="{'left':leftSetting}">
+	  <HeaderComp/>
     <section>
       <div>
         <img :src="book.img">
@@ -72,9 +74,11 @@
 </template>
 
 <script>
+	import HeaderComp from './HeaderComp'
 export default {
   name: 'DetailsPage',
   props:['isShowDetails','leftSetting','book'],
+	components:{HeaderComp},
   data () {
     return {
 	 objData:[],

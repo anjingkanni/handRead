@@ -1,13 +1,20 @@
+@charset "utf-8";
+
+@height:40px;
+@heights:100%;
+@widths:100%;
+@height:50px;
 div{
-	overflow-y:auto;
-	overflow-x: hidden;
-	height: calc(~"100% - 100px");
-  @height:50px;
+	width: 100%;
+	position: relative;
   .classification{
-    @height:40px;
-    @heights:100%;
-    @widths:100%;
-   /* margin-top: 50px;*/
+	  width: 100%;
+	  margin: 50px 0 0 0;
+	  z-index: 10;
+	  overflow-y:auto;
+	  overflow-x: hidden;
+	  height: calc(~"100% - 100px");
+
     padding: 4%;
     section{
       width: 100%;

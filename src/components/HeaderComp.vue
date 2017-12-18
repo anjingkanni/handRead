@@ -1,5 +1,5 @@
 <template>
-  <header class="header">
+  <div class="header">
     <ul>
       <li>
         <span @click="$emit('hide')" v-if="returnicon" class="a">&lt;</span>
@@ -11,16 +11,15 @@
         </div>
       </li>
     </ul>
-  </header>
+  </div>
 </template>
 
 <script>
 export default {
   name: 'Header',
-  props:['returnicon','titles','optionicon'],
+  props:["returnicon","titles","optionicon"],
   data () {
     return {
-
     }
   }
 }
@@ -30,14 +29,17 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="less" >
   @height:50px;
-  header{
+  div{
+	  width: 100%;
     text-align: center;
     height: @height;
     background: rgb(40,40,40);
     color: #fff;
     line-height: @height;
-    z-index: 10;
-
+    z-index: 1000;
+	position: fixed;
+	  top: 0;
+	  left: 0;
     ul{
       li{
         position: relative;

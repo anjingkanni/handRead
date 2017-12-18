@@ -1,5 +1,10 @@
 <template>
  <div class="main">
+	 	<HeaderComp
+			:returnicon="returnicon"
+			:titles="titles"
+	 		:optionicon="optionicon"
+		/>
 		<SlideShow
 			:slide-img="slideImgs"
 		/>
@@ -15,7 +20,7 @@
 			:bookCount="bookCount"
 			@subtractOneBook="subtractOneBook"
 			@addToCart="addToCart"
-		 />	
+		 />
 	</div>
 </template>
 
@@ -25,7 +30,8 @@
 <style lang="less" scoped>
 	div.main {
 		position: relative;
-		margin: 0;
+		margin: 50px 0 0 0;
+		z-index: 10;
 		padding: 0;
 		overflow-y:auto;
 		overflow-x: hidden;

@@ -1,21 +1,18 @@
 <template>
   <transition name="slide-fade">
-    <article v-show="isShowaddress">
-      <h1>
-        <span class="fa fa-angle-left"></span>
-        收货地址
-      </h1>
+    <article v-show="isShowaddress" class="fa fa-angle-left">
+		<HeaderComp/>
       <form action="">
         <div>
-          <label for="">姓名</label>
+          <label>姓名</label>
           <input type="text" placeholder="请填写您的真实姓名">
         </div>
         <div>
-          <label for="">联系电话</label>
+          <label>联系电话</label>
           <input type="text" placeholder="请填写我们联系您的电话号码">
         </div>
         <div>
-          <label for="">邮政编码</label>
+          <label>邮政编码</label>
           <input type="text" placeholder="请填写您所在地区的邮政编码">
         </div>
         <div>
@@ -46,7 +43,7 @@
 
         </div>
         <div>
-          <label for="">详细地址</label>
+          <label>详细地址</label>
           <input type="text" placeholder="请输入详细的街道、楼栋、门牌号" >
         </div>
           <button type="button" class="modify" @click="$emit('modifybtn')">确认地址</button>
@@ -64,9 +61,11 @@
 </template>
 
 <script>
+	import HeaderComp from './HeaderComp'
 export default {
   name: 'personal',
   props:['isShowaddress','shows'],
+	components:{HeaderComp},
   data () {
     return {
       msg: '首页',
