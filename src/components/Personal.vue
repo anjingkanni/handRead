@@ -47,13 +47,13 @@
         <span class="icon"></span>
       </div>
     </section>
-    <button type="button" class="btn color-red">退出登录</button>
+    <button type="button" class="btn color-red" @click="backSignIn">退出登录</button>
     <PersonalData :isShowpersona="isShowpersona" @personHides="personHides" @personbtn="personbtn" :personshows="personshows">
     </PersonalData>
     <ReceivingAddress :isShowaddress="isShowaddress" @hides="hides" @modifybtn="modifybtn" :shows="shows">
     </ReceivingAddress>
 	  <SetInAndSetUp
-
+	  	:SetInAndUpStatus="SetInAndUpStatus"
 	  ></SetInAndSetUp>
   </div>
 </template>
@@ -79,6 +79,8 @@ export default {
 		returnicon: false,
 		titles: '个人中心',
 		optionicon: false,
+		// 登录注册功能
+		SetInAndUpStatus:false
     }
   },
   methods:{
@@ -105,7 +107,11 @@ export default {
     /*弹出弹出框*/
     modifybtn(){
         this.shows = !this.shows;
-    }
+    },
+	  /*退出登录功能点击事件*/
+	  backSignIn(){
+	  	this.SetInAndUpStatus = true;
+	  }
   }
 
 }

@@ -1,7 +1,11 @@
 <template>
   <transition name="slide-fade">
     <article v-show="isShowaddress" class="fa fa-angle-left">
-		<HeaderComp/>
+		<HeaderComp
+			:returnicon="returnicon"
+			:titles="titles"
+			:optionicon="optionicon"
+		/>
       <form action="">
         <div>
           <label>姓名</label>
@@ -69,6 +73,10 @@ export default {
   data () {
     return {
       msg: '首页',
+		//header
+		returnicon: false,
+		titles: '修改地址',
+		optionicon: false,
     }
   },
   methods:{

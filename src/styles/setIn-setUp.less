@@ -1,21 +1,24 @@
 @charset "utf-8";
 
 div.setIn-setUp {
-	width: 90%;
-	height: calc(~"100% - 100px");
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: calc(~"200% - 100px");
 	margin: 0 auto;
+	overflow-y: hidden;
+	overflow-x: hidden;
 	background-color: white;
 	border-radius: 5px;
-	section.choose-item {
 
-	}
 	div.setIn-setUp-page {
 		margin-top: 20px;
 		position: relative;
 		section.setUp-fill-content {
 			position: absolute;
 			top: 0;
-			left: 0;
+			left: 30px;
 		}
 	}
 }
@@ -36,6 +39,9 @@ div.form-group {
 			height: 50px;
 		}
 	}
+}
+.fa-angle-left:before {
+	content: "";
 }
 
 

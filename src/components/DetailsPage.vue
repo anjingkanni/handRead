@@ -2,7 +2,11 @@
 <transition name="slide-fade">
 
   <div class="details fa fa-angle-left" v-if="isShowDetails" :class="{'left':leftSetting}">
-	  <HeaderComp/>
+	  <HeaderComp
+		  :returnicon="returnicon"
+		  :titles="titles"
+		  :optionicon="optionicon"
+	  />
     <section>
       <div>
         <img :src="book.img">
@@ -82,7 +86,11 @@ export default {
   data () {
     return {
 	 objData:[],
-		show:true
+		show:true,
+		//header
+		returnicon: false,
+		titles: '图书详情',
+		optionicon: false,
     }
   },
 	methods:{

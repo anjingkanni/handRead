@@ -1,6 +1,11 @@
 <template>
   <transition name="slide-fade">
     <article v-show="isShowpersona" class="fa fa-angle-left">
+		<HeaderComp
+			:returnicon="returnicon"
+			:titles="titles"
+			:optionicon="optionicon"
+		/>
       <form action="">
         <div>
           <label>昵称</label>
@@ -42,15 +47,21 @@
 </template>
 
 <script>
+	import HeaderComp from './HeaderComp'
 export default {
   name: 'personal',
   props:['isShowpersona','personshows'],
+	components:{HeaderComp},
   data () {
     return {
       msg: '首页',
 	  menShow:false,
 	  womenShow:false,
-	  secrecy:true
+	  secrecy:true,
+		//header
+		returnicon: false,
+		titles: '修改资料',
+		optionicon: false,
     }
 },
 methods:{

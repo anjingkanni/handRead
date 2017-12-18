@@ -1,128 +1,92 @@
 <template>
-	<div class="setIn-setUp">
-		<section class="choose-item">
-			<ul class="nav nav-tabs">
-				<li role="presentation" :class="{'active':isActiveIn}">
-					<a href="#" @click="setIn">登陆</a>
-				</li>
-				<li role="presentation" :class="{'active':isActiveUp}">
-					<a href="#" @click="setUp">注册</a>
-				</li>
-			</ul>
-		</section>
-		<div class="setIn-setUp-page">
-			<section class="setIn-fill-content" v-if="setInState">
-				<form class="form-horizontal" name="loginForm">
-					<div class="form-group">
-						<label class="col-sm-2 control-label">手机号:</label>
-						<div class="col-sm-10">
-							<input type="email" class="form-control" placeholder="请输入您的手机号" id="loginAct" v-model="loginPhone">
-						</div>
-					</div>
-					<div class="form-group">
-						<label class="col-sm-2 control-label">密码:</label>
-						<div class="col-sm-10">
-							<input type="password" class="form-control" placeholder="请输入您的密码" id="loginPsd" v-model="loginPsd">
-						</div>
-					</div>
-					<div class="form-group">
-						<div class="col-sm-offset-2 col-sm-10">
-							<button type="submit" class="btn btn-success" id="loginBtn" @click="register">
-								确认登陆
-							</button>
-						</div>
-					</div>
-				</form>
+	<transition name="slide-fade">
+		<div class="setIn-setUp fa fa-angle-left" v-if="SetInAndUpStatus">
+			<HeaderComp
+				:returnicon="returnicon"
+				:titles="titles"
+				:optionicon="optionicon"
+			/>
+			<section class="choose-item">
+				<ul class="nav nav-tabs">
+					<li role="presentation" :class="{'active':isActiveIn}">
+						<a href="#" @click="setIn">登陆</a>
+					</li>
+					<li role="presentation" :class="{'active':isActiveUp}">
+						<a href="#" @click="setUp">注册</a>
+					</li>
+				</ul>
 			</section>
-			<section class="setUp-fill-content" v-if="setUpState">
-				<form class="form-horizontal" name="registerForm">
-					<div class="form-group">
-						<label class="col-sm-2 control-label">手机号:</label>
-						<div class="col-sm-10">
-							<input type="text" class="form-control" placeholder="请输入您的手机号" name="regAccount" required v-model="registerPhone" @blur="mouseLeavePhone">
-							<p v-if="errorMsgPhone">{{errorMsgPhoneTxt}}</p>
+			<div class="setIn-setUp-page">
+				<section class="setIn-fill-content" v-if="setInState">
+					<form class="form-horizontal" name="loginForm">
+						<div class="form-group">
+							<label class="col-sm-2 control-label">手机号:</label>
+							<div class="col-sm-10">
+								<input type="email" class="form-control" placeholder="请输入您的手机号" id="loginAct" v-model="loginPhone">
+							</div>
 						</div>
-					</div>
-					<div class="form-group">
-						<label class="col-sm-2 control-label">昵称:</label>
-						<div class="col-sm-10">
-							<input type="text" class="form-control" placeholder="请输入您的昵称" v-model="registerName" @blur="mouseLeaveName">
-							<p v-if="errorMsgName">{{errorMsgNameTxt}}</p>
+						<div class="form-group">
+							<label class="col-sm-2 control-label">密码:</label>
+							<div class="col-sm-10">
+								<input type="password" class="form-control" placeholder="请输入您的密码" id="loginPsd" v-model="loginPsd">
+							</div>
 						</div>
-					</div>
-					<div class="form-group">
-						<label class="col-sm-2 control-label">密码:</label>
-						<div class="col-sm-10">
-							<input type="password" class="form-control" placeholder="请输入您的密码" id="registerPsd" name="regPassword" required v-model="registerPsd" @blur="mouseLeavePsd">
-							<p v-if="errorMsgPsd">{{errorMsgPsdTxt}}</p>
+						<div class="form-group">
+							<div class="col-sm-offset-2 col-sm-10">
+								<button type="submit" class="btn btn-success" id="loginBtn" @click="register">
+									确认登陆
+								</button>
+							</div>
 						</div>
-					</div>
-					<div class="form-group">
-						<label class="col-sm-2 control-label">确认密码:</label>
-						<div class="col-sm-10">
-							<input type="password" class="form-control" placeholder="请确认您的密码" id="affirmPsd" required name="affPassword" v-model="affirmPsd" @blur="mouseLeaveAffirm">
-							<p v-if="errorMsgAffirmPsd">{{errorMsgAffirmTxt}}</p>
+					</form>
+				</section>
+				<section class="setUp-fill-content" v-if="setUpState">
+					<form class="form-horizontal" name="registerForm">
+						<div class="form-group">
+							<label class="col-sm-2 control-label">手机号:</label>
+							<div class="col-sm-10">
+								<input type="text" class="form-control" placeholder="请输入您的手机号" name="regAccount" required v-model="registerPhone" @blur="mouseLeavePhone">
+								<p v-if="errorMsgPhone">{{errorMsgPhoneTxt}}</p>
+							</div>
 						</div>
-					</div>
-					<div class="form-group">
-						<div class="col-sm-offset-2 col-sm-10">
-							<button type="button" class="btn btn-success" id="register-btn" @click="register">
-								确认注册
-							</button>
+						<div class="form-group">
+							<label class="col-sm-2 control-label">昵称:</label>
+							<div class="col-sm-10">
+								<input type="text" class="form-control" placeholder="请输入您的昵称" v-model="registerName" @blur="mouseLeaveName">
+								<p v-if="errorMsgName">{{errorMsgNameTxt}}</p>
+							</div>
 						</div>
-					</div>
-				</form>
-			</section>
-		</div>
+						<div class="form-group">
+							<label class="col-sm-2 control-label">密码:</label>
+							<div class="col-sm-10">
+								<input type="password" class="form-control" placeholder="请输入您的密码" id="registerPsd" name="regPassword" required v-model="registerPsd" @blur="mouseLeavePsd">
+								<p v-if="errorMsgPsd">{{errorMsgPsdTxt}}</p>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-2 control-label">确认密码:</label>
+							<div class="col-sm-10">
+								<input type="password" class="form-control" placeholder="请确认您的密码" id="affirmPsd" required name="affPassword" v-model="affirmPsd" @blur="mouseLeaveAffirm">
+								<p v-if="errorMsgAffirmPsd">{{errorMsgAffirmTxt}}</p>
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="col-sm-offset-2 col-sm-10">
+								<button type="button" class="btn btn-success" id="register-btn" @click="register">
+									确认注册
+								</button>
+							</div>
+						</div>
+					</form>
+				</section>
+			</div>
 
-	</div>
+		</div>
+	</transition>
 </template>
 
 <script>
 	/**** 函数功能定义部分 ****/
-
-	/**
-	 * 功能：注册按钮验证事件
-	 * 参数：
-	 * 1、表单的name属性值（String）
-	 * 2、注册按钮标识符（String）
-	 **/
-	/*function signUpValid(ident) {
-		$(ident).on("click", function() {
-			// 获取错误信息的个数
-			var rightLength = $("i.checked").length;
-			if(rightLength === 3) {
-				// 表单验证
-				var user = {
-					"username": $("[name='regAccount']").val(),
-					"password": $("[name='regPassword']").val()
-				};
-
-				console.log(Object.keys(user));
-				determineUserIsExists("users", "username", $("[name='regAccount']").val(), function (status) {
-					if(status == 0) {
-						alert("用户已经存在！");
-						$("[name='regAccount']").val("");
-						$("[name='regPassword']").val("");
-					}else if(status == 1) {
-						// 存储用户
-						addUser("users", user, function () {
-							//页面传值
-							var name =  $("[name='regAccount']").val();
-							localStorage.setItem("nameInfo",name);
-
-							location.href = "index.html"
-							// 跳转到主页....
-						});
-					}
-				});
-			}
-			// 如果存在错误
-			else {
-				return;
-			}
-		});
-	}*/
 
 	/**
 	 * 功能：登录按钮验证事件
@@ -200,20 +164,6 @@
 		else {return false;}
 	}
 
-	/**
-	 * 功能：      判断两次输入是否一致
-	 * @param affPassword   ：二次输入内容
-	 * @return {boolean}    如果一致返回true，否则返回false
-	 */
-	/*function affirmPsd(affPassword) {
-		var $currentPsd = $("[name='regPassword']").val();
-		if(affPassword === $currentPsd){
-			return true;
-		} else {
-			return false;
-		}
-	}*/
-
 	// 封装功能函数
 	/**
 	 * 本地存储：添加用户
@@ -276,57 +226,11 @@
 		return tag;
 	}
 
-	/**
-	 * 判断是否登录成功
-	 * @param key      存储用户信息在本地的key
-	 * @param gists    判断依据
-	 * @param response 响应结果
-	 * 0   用户不存在
-	 * 1   账号或密码错误
-	 * 2   账号或密码密码为空
-	 * 200 登录成功
-	 */
-	/*function login(key, gists, response) {
-		// 判断本地数据用户集合是否存在
-		// 如果不存在，则直接提示用户不存在
-		if(!localStorage[key]) {
-			response(0);
-			return;
-		}
-
-		// 判断用户输入的账号或密码为空
-		var username = Object.keys(gists)[0];
-		var password = Object.keys(gists)[1];
-		if(!gists[username] || !gists[password]) {
-			response(2);
-			return;
-		}
-
-		// 判断是否登录成功
-		var users = JSON.parse(localStorage[key]);
-		var idx = undefined;
-		for(var i = 0; i < users.length; i++) {
-			// 判断用户是否存在
-			if(users[i][username] == gists[username]) {
-				idx = i;
-				break;
-			}
-		}
-		if(idx == undefined) {
-			// 用户不存在
-			response(0);
-		}else {
-			// 用户存在
-			if((users[idx][username] == gists[username]) &&  (users[idx][password] == gists[password])) {
-				response(200);
-			}else {
-				response(1);
-			}
-		}
-	}*/
+	import HeaderComp from "./HeaderComp"
 	export default {
 		name: "setIn-setUp",
-		props: [],
+		props: ["SetInAndUpStatus"],
+		components:{HeaderComp},
 		data(){
 			return {
 				setInState:true,
@@ -353,7 +257,11 @@
 					errorNameTxt:["注册昵称不能为空","请输入正确的昵称格式","该昵称已被注册"],
 					errorAffirmTxt:["确认密码不能为空","两次密码输入不一致"],
 				},
-				registerStatus:[false,false,false,false]
+				registerStatus:[false,false,false,false],
+			//header
+				returnicon: false,
+				titles: '登录注册',
+				optionicon: false,
 			}
 		},
 		methods: {
@@ -449,37 +357,10 @@
 						localStorage.setItem("nameInfo", name);
 					});
 				}
-				/*addUser("users", user, function () {
-					//页面传值
-					var name = $("[name='regAccount']").val();
-					localStorage.setItem("nameInfo", name);
-				});*/
 			},
 			login() {
-
 			}
 		}
-		/*mounted(){
-			/!***********注册功能实现*************!/
-				// 实例化表单验证函数对象
-			var formValid = new Valid("registerForm");
-			// 用户名验证
-			formValid.blurValid("[name='regAccount']", "注册账号不能为空","请输入正确的邮箱格式",function (mail) {
-				return CheckMail(mail);
-			});
-			// 昵称验证
-			formValid.blurValid("[name='regPassword']", "注册密码不能为空","请输入正确的6-16位的密码格式",function (password) {
-				return CheckPassword(password);
-			});
-			// 确认密码验证
-			formValid.blurValid("[name='affPassword']", "确认密码内容不能为空","两次密码必须一致",function (affPassword) {
-				return affirmPsd(affPassword);
-			});
-			// 注册按钮验证
-			signUpValid("#register-btn");
-			//登录按钮验证
-			loginValid("#loginBtn");
-		}*/
 	}
 </script>
 
