@@ -1,85 +1,120 @@
 <template>
-  <div class="shopping">
-    <h2>编辑</h2>
-      <section>
-        <ul>
-          <li >
-            <div class="img-show">
-              <img src="../assets/b10.jpg">
-            </div>
-            <div class="content-details">
-              <h3>JavaScript高级程序设计（第三版）</h3>
-              <p>Nicholas C. Zakas</p>
-              <p class="price">￥ 99</p>
-            </div>
-            <div class="regulation">
-              <span @click="reduce">-</span>
-              <span>{{numbers}}</span>
-              <span @click="increases">+</span>
-            </div>
-          </li>
-          <li >
-            <div class="img-show">
-              <img src="../assets/b10.jpg">
-            </div>
-            <div class="content-details">
-              <h3>JavaScript高级程序设计（第三版）</h3>
-              <p>Nicholas C. Zakas</p>
-              <p class="price">￥ 99</p>
-            </div>
-            <div class="regulation">
-              <span>-</span>
-              <span>2</span>
-              <span>+</span>
-            </div>
-          </li>
-          <li >
-            <div class="img-show">
-              <img src="../assets/b10.jpg">
-            </div>
-            <div class="content-details">
-              <h3>JavaScript高级程序设计（第三版）</h3>
-              <p>Nicholas C. Zakas</p>
-              <p class="price">￥ 99</p>
-            </div>
-            <div class="regulation">
-              <span>-</span>
-              <span>2</span>
-              <span>+</span>
-            </div>
-          </li>
-        </ul>
-      </section>
+	<div class="shopping">
+		<h2 v-if="edits" @click="editor">编辑</h2>
+		<div v-if="cancel" class="deleting">
+			<h2 @click="cancels">取消</h2>
+			<h2 @click="deleteSelected">删除选中</h2>
+		</div>
 
-    <button type="button" class="btn color-green">前往支付</button>
-</div>
+		<section>
+			<shoppingList
+				:dotsShow="dotsShow"
+				:electsShow="electsShow"
+				:edits="edits"
+				@electSplices="electSplices"
+				:objdatashopping="objdatashopping"
+
+			>
+				<oppingList>
+					<ction>
+						<button type="button" class="btn color-green" @click="payShopping">前往支付<tton>
+
+							<!--支付组件-->
+							<PayPage :shopHide="shopHide"></PayPage>
+	</div>
 </template>
 
 <script>
-export default {
-  name: 'shopping',
-  data () {
-    return {
-      msg: '购物车',
-      numbers: 2
-    }
-  },
-  methods:{
-    reduce:function () {
-      if(this.numbers >0){
-        this.numbers = this.numbers - 1;
-      }else {
-          return;
-      }
-    },
-    increases:function () {
-      this.numbers = this.numbers + 1;
-    }
-  }
-}
+	import shoppingList from './ShoppingList'
+	import PayPage from './PayPage'
+
+	export default {
+		name: 'shopping',
+		components:{PayPage,shoppingList},
+		data () {
+			return {
+				msg: '购物车',
+				/*删除选中显示与隐藏*/
+				cancel:false,
+				/*编辑的显示与隐藏*/
+				edits:true,
+				/*选中单品的显示与隐藏*/
+				dotsShow:false,
+				/*选中图标显示与隐藏*/
+				electsShow:false,
+//				numbers: 2,
+				objdatashopping:null,
+				arr:[],
+				arrNew:[],
+				//支付页面显示器
+				shopHide:false,
+			}
+		},
+		methods:{
+			/*点击编辑*/
+			editor(){
+				this.cancel = true;
+				this.edits = false;
+				this.dotsShow = true;
+				this.electsShow = true;
+
+			},
+			/*点击取消*/
+			cancels(){
+				this.cancel = false;
+				this.edits = true;
+				this.dotsShow = false
+			},
+			/*点击选中删除*/
+			deleteSelected(){
+				var  conunt = this.arr.length;
+				console.log(conunt)
+				var idxs = 0;
+				while (conunt){
+					if(this.objdatashopping[idxs].checked === true){
+						this.objdatashopping.splice(idxs,1);
+						conunt--
+					}else {
+						idxs++
+					}
+				}
+			},
+			/*点击选中单品*/
+			electSplices(idx){
+				this.objdatashopping[idx].checked = !this.objdatashopping[idx].checked;
+				this.arr.push(idx);
+				if(this.objdatashopping[idx].checked == true){
+					for(var i = 0; i <this.arr.length; i++){
+						if(this.arrNew.indexOf(this.arr[i]) === -1){
+							this.arrNew.push(this.arr[i]);
+						}else{
+							continue;
+						}
+
+					}
+				}
+			},
+			getData(){
+				const objdatashop = JSON.parse(localStorage.getItem('locaShop'));
+				if(objdatashop.length != 0){
+					this.objdatashopping = objdatashop;
+				}else {
+					return;
+				}
+			},
+			//前往支付
+			payShopping(){
+				this.shopHide = true
+			}
+		},
+		mounted(){
+			this.getData();
+		}
+
+	}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped lang="less">
-  @import "../styles/shopping.less";
+<style lang="less">
+	@import "../styles/shopping.less";
 </style>

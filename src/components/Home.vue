@@ -1,21 +1,22 @@
 <template>
-  <div class="main">
-	  <SlideShow
-		  :slide-img="slideImgs"
-	  />
-	  <IndexReco
-		  :new-book-list="recoBook"
-		  @enterPage="enterPage"
-	  />
-	  <BookDetailsPage
-		  :book-details-info="bookDetails"
-		  :is-details="isDetails"
-		  @hiddenPage="hiddenPage"
-		  @addOneBook="addOneBook"
-		  :bookCount="bookCount"
-		  @subtractOneBook="subtractOneBook"
-	  />
-  </div>
+ <div class="main">
+		<SlideShow
+			:slide-img="slideImgs"
+		/>
+		<IndexReco
+			:new-book-list="recoBook"
+			@enterPage="enterPage"
+		/>
+		<BookDetailsPage
+			:book-details-info="bookDetails"
+			:is-details="isDetails"
+			@hiddenPage="hiddenPage"
+			@addOneBook="addOneBook"
+			:bookCount="bookCount"
+			@subtractOneBook="subtractOneBook"
+			@addToCart="addToCart"
+		 />	
+	</div>
 </template>
 
 <script src="../scripts/main-container.js"></script>

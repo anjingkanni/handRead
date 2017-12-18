@@ -14,15 +14,15 @@
 						</p>
 						<p>
 							<span>页数</span>
-							<span>{{bookDetailsInfo.pages}}</span>
+							<span>{{bookDetailsInfo.page}}</span>
 						</p>
 						<p>
 							<span>书号</span>
-							<span>{{bookDetailsInfo.number}}</span>
+							<span>{{bookDetailsInfo.ISBN}}</span>
 						</p>
 						<p>
 							<span>出版日期</span>
-							<span>{{bookDetailsInfo.DateOfPublication}}</span>
+							<span>{{bookDetailsInfo.day}}</span>
 						</p>
 						<span id="details-item">
 							<span>详情</span>
@@ -33,7 +33,7 @@
 				<div class="middle-content">
 					<p class="book-name">{{bookDetailsInfo.name}}</p>
 					<p class="book-describe">{{bookDetailsInfo.describe}}</p>
-				</div>
+				</div>R
 			</div>
 			<div class="price-num">
 				<p class="book-price">￥:{{(bookDetailsInfo.price * bookCount).toFixed(2)}}</p>
@@ -44,13 +44,14 @@
 				</p>
 			</div>
 			<div class="shop-btn">
-				<button type="button" class="btn btn-primary">加入购物车</button>
-				<button type="button" class="btn btn-success pull-right">立即购买</button>
+				<button type="button" class="btn btn-primary" @click="$emit('addToCart',bookDetailsInfo)">加入购物车</button>
+				<router-link :to="{name:'shoppingcart'}" tag="span"><button type="button" class="btn btn-success pull-right" @click="$emit('addToCart',bookDetailsInfo)">立即购买</button></router-link>
+
 			</div>
 		</div>
 	</div>
 </template>
-
+<!--<button type="button" class="btn btn-success pull-right" @click="$emit('addToCart',bookDetailsInfo)">立即购买</button>-->
 <script>
 	export default {
 		name: "BookDetailsPage",
