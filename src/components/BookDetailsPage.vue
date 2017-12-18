@@ -45,13 +45,13 @@
 			</div>
 			<div class="shop-btn">
 				<button type="button" class="btn btn-primary" @click="$emit('addToCart',bookDetailsInfo)">加入购物车</button>
+				<router-link :to="{name:'shoppingcart'}" tag="span"><button type="button" class="btn btn-success pull-right" @click="$emit('addToCart',bookDetailsInfo)">立即购买</button></router-link>
 
-				<router-link :to="{name:'shoppingcart'}" tag="span" ><button type="button" class="btn btn-success pull-right" @click="$emit('addToCart',bookDetailsInfo)">立即购买</button></router-link>
 			</div>
 		</div>
 	</div>
 </template>
-
+<!--<button type="button" class="btn btn-success pull-right" @click="$emit('addToCart',bookDetailsInfo)">立即购买</button>-->
 <script>
 	export default {
 		name: "BookDetailsPage",
