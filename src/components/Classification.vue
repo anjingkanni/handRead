@@ -1,10 +1,5 @@
 <template>
     <div class="classification">
-		<HeaderComp
-			:returnicon="returnicon"
-			:titles="titles"
-			:optionicon="optionicon"
-		/>
         <!--搜索框-->
         <section>
             <label>
@@ -38,9 +33,14 @@
         </section>
       <detailsPage
         :isShowDetails="showDetails"
-        :leftSetting="leftSetting"
         :book="detailsPage"
+		@closeDetailsPage="closeDetailsPage"
       />
+		<HeaderComp
+			:returnicon="returnicon"
+			:titles="titles"
+			:optionicon="optionicon"
+		/>
     </div>
 </template>
 
@@ -56,7 +56,6 @@ export default {
   data () {
     return {
       //图书详情页的控制与隐藏
-      leftSetting: null,
       showDetails: false,
       //图书列表
       bookList: [],
@@ -114,33 +113,18 @@ export default {
     detailsBox(index){
       this.detailsPage = this.bookFilter[index];
       this.showDetails = true;
-      this.leftSetting = true;
-      this.headDisplay()
     },
     hide(){
       this.detailsPage = [];
-      this.leftSetting = false;
       this.showDetails = false;
-      this.headDisplay()
     },
-
+	  closeDetailsPage(){
+    	this.showDetails = false;
+	  },
     /*点击数据加载更多*/
     loadMore(){
       this.num += 4
     },
-    /*判断header的显示*/
-    headDisplay(){
-      if (this.showDetails === false){
-        this.optionicon = false
-        this.returnicon = false
-        this.titles = '分类'
-      }else{
-        this.optionicon = true
-        this.returnicon = true
-        this.titles = '图书详情'
-      }
-    }
-
   },
   computed: {
     /*判断搜索框是否有内容*/

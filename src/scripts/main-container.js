@@ -2,6 +2,7 @@ import SlideShow from '@/components/SlideShow'
 import IndexReco from '@/components/IndexReco'
 import BookDetailsPage from '@/components/BookDetailsPage'
 import HeaderComp from '@/components/HeaderComp'
+import DetailsPage from '@/components/DetailsPage'
 
 
 
@@ -15,12 +16,15 @@ export default {
     // 首页书籍推荐部分
 	  IndexReco,
     // 书籍查看部分
-	  BookDetailsPage
+	  BookDetailsPage,
+	  // 详情页组件部分
+	  DetailsPage
   },
   data() {
     return {
 		slideImgs:["./src/assets/slide-01.png","./src/assets/slide-02.png","./src/assets/slide-03.png"],
 		bookDetails:{},
+		detailsPageObj:{},
 		recoBook:[{
 			topTitle:'新书上架',
 			bookList:[
@@ -161,7 +165,8 @@ export default {
 		titles: '掌上书城',
 		optionicon: false,
 		//存值对象
-		objData:[]
+		objData:[],
+		isShowDetails:false
     };
   },
 	methods:{
@@ -196,6 +201,18 @@ export default {
 			this.objData.push(book);
 			const locaShop = JSON.stringify(this.objData);
 			localStorage.setItem('locaShop',locaShop);
+		},
+		toDetailsPage(){
+			this.detailsPageObj = this.bookDetails;
+			this.isShowDetails = true;
+			this.leftSetting.left = 0;
+		},
+		closeDelPage(){
+			this.isShowDetails = false;
+			this.isDetails = false;
 		}
-  }
+  },
+	mounted(){
+  		this.closeDelPage();
+	}
 };

@@ -1,13 +1,14 @@
-transition{
-  width: 100%;
-  height: 100%;
-}
-.fa-angle-left:before {
-	content: "";
-}
+
 article{
+	background: #f2f2f2;
+	position: absolute;
+	width: 100%;
+	top: 50px!important;
+	right: 0;
+	bottom: 50px;
 	padding: 1%;
 	border-radius: 5px;
+	height: calc(~"100% - 100px");
   .headhgt(){
     line-height:50px;
     text-align: center;
@@ -36,13 +37,6 @@ article{
     cursor: pointer;
     font-size: 20px;
   }
-
-  background: #f2f2f2;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  right: 0;
   h1{
     .headhgt;
     position: relative;
@@ -146,4 +140,14 @@ article{
     }
 
   }
+}
+.slide-fade-enter-active {
+	transition: all .3s ease;
+}
+.slide-fade-leave-active {
+	transition: all .3s ease;
+}
+.slide-fade-enter, .slide-fade-leave-to
+	/* .slide-fade-leave-active for below version 2.1.8 */ {
+	transform: translateX(100%);
 }

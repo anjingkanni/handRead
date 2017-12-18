@@ -2,7 +2,7 @@
   <div class="header">
     <ul>
       <li>
-        <span @click="$emit('hide')" v-if="returnicon" class="a">&lt;</span>
+        <span @click="$emit('hidePage')" v-if="returnicon" class="a">&lt;</span>
         <span>{{titles}}</span>
         <div v-if="optionicon">
           <i></i>

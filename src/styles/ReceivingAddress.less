@@ -1,5 +1,10 @@
 
 article{
+	position: absolute;
+	width: 100%;
+	top: 50px!important;
+	right: 0;
+	bottom: 50px;
   .headhgt(){
     line-height:50px;
     text-align: center;
@@ -107,6 +112,13 @@ article{
 
   }
 }
-.fa-angle-left:before {
-	content: "";
+.slide-fade-enter-active {
+	transition: all .3s ease;
+}
+.slide-fade-leave-active {
+	transition: all .3s ease;
+}
+.slide-fade-enter, .slide-fade-leave-to
+	/* .slide-fade-leave-active for below version 2.1.8 */ {
+	transform: translateX(100%);
 }

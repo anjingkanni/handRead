@@ -24,7 +24,7 @@
 							<span>出版日期</span>
 							<span>{{bookDetailsInfo.day}}</span>
 						</p>
-						<span id="details-item">
+						<span id="details-item" @click="$emit('toDetailsPage')">
 							<span>详情</span>
 							<i class="font-icon">&#xe616;</i>
 						</span>

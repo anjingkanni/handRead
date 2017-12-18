@@ -14,7 +14,7 @@
 
     </section>
     <section class="list-text">
-      <div class="text-box"@click="personaldata">
+      <div class="text-box" @click="personaldata">
         <p>设置个人资料</p>
         <span class="icon"></span>
       </div>
@@ -48,9 +48,9 @@
       </div>
     </section>
     <button type="button" class="btn color-red" @click="backSignIn">退出登录</button>
-    <PersonalData :isShowpersona="isShowpersona" @personHides="personHides" @personbtn="personbtn" :personshows="personshows">
+    <PersonalData :isShowpersona="isShowpersona" @personHides="personHides" @closePersonPage="closePersonPage" @personbtn="personbtn" :personshows="personshows">
     </PersonalData>
-    <ReceivingAddress :isShowaddress="isShowaddress" @hides="hides" @modifybtn="modifybtn" :shows="shows">
+    <ReceivingAddress :isShowaddress="isShowaddress" @hides="hides" @modifybtn="modifybtn" :shows="shows" @closeAddressPage="closeAddressPage">
     </ReceivingAddress>
 	  <SetInAndSetUp
 	  	:SetInAndUpStatus="SetInAndUpStatus"
@@ -80,7 +80,7 @@ export default {
 		titles: '个人中心',
 		optionicon: false,
 		// 登录注册功能
-		SetInAndUpStatus:false
+		SetInAndUpStatus:false,
     }
   },
   methods:{
@@ -111,8 +111,18 @@ export default {
 	  /*退出登录功能点击事件*/
 	  backSignIn(){
 	  	this.SetInAndUpStatus = true;
+	  },
+	  closePersonPage(){
+		  this.isShowpersona = false
+	  },
+	  closeAddressPage(){
+		  this.isShowaddress = false
 	  }
-  }
+  },
+	mounted() {
+  		this.closePersonPage();
+  		this.closeAddressPage();
+	}
 
 }
 </script>

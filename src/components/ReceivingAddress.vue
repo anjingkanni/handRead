@@ -5,6 +5,7 @@
 			:returnicon="returnicon"
 			:titles="titles"
 			:optionicon="optionicon"
+			@hidePage="closePage"
 		/>
       <form action="">
         <div>
@@ -68,22 +69,29 @@
 	import HeaderComp from './HeaderComp'
 export default {
   name: 'personal',
-  props:['isShowaddress','shows'],
+  props:['isShowaddress','shows','addressLeftSet'],
 	components:{HeaderComp},
   data () {
     return {
       msg: '首页',
 		//header
-		returnicon: false,
+		returnicon: true,
 		titles: '修改地址',
 		optionicon: false,
+		headerHidden:true,
     }
   },
   methods:{
     modifybtn:function () {
       this.shows = !this.shows;
-    }
-  }
+    },
+	closePage(){
+		this.$emit('closeAddressPage');
+	}
+  },
+	mounted() {
+		this.closePage()
+	}
 }
 </script>
 

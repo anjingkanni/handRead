@@ -1,10 +1,11 @@
 <template>
   <transition name="slide-fade">
-    <article v-show="isShowpersona" class="fa fa-angle-left">
+    <article v-if="isShowpersona" class="fa fa-angle-left">
 		<HeaderComp
 			:returnicon="returnicon"
 			:titles="titles"
 			:optionicon="optionicon"
+			@hidePage="closePage"
 		/>
       <form action="">
         <div>
@@ -52,35 +53,41 @@ export default {
   name: 'personal',
   props:['isShowpersona','personshows'],
 	components:{HeaderComp},
-  data () {
-    return {
-      msg: '首页',
-	  menShow:false,
-	  womenShow:false,
-	  secrecy:true,
-		//header
-		returnicon: false,
-		titles: '修改资料',
-		optionicon: false,
-    }
-},
-methods:{
-	maleSwitch(){
-		this.menShow = true;
-	    this.womenShow = false;
-	    this.secrecy = false
+	  data () {
+		return {
+		  msg: '首页',
+		  menShow:false,
+		  womenShow:false,
+		  secrecy:true,
+			//header
+			returnicon: true,
+			titles: '修改资料',
+			optionicon: false,
+		}
 	},
-	femaleSwitch(){
-		this.menShow = false;
-		this.womenShow = true;
-		this.secrecy = false
+	methods:{
+		maleSwitch(){
+			this.menShow = true;
+			this.womenShow = false;
+			this.secrecy = false
+		},
+		femaleSwitch(){
+			this.menShow = false;
+			this.womenShow = true;
+			this.secrecy = false
+		},
+		secrecys(){
+			this.menShow = false;
+			this.womenShow = false;
+			this.secrecy = true
+		},
+		closePage(){
+			this.$emit('closePersonPage');
+		}
 	},
-	secrecys(){
-		this.menShow = false;
-		this.womenShow = false;
-		this.secrecy = true
+	mounted() {
+		this.closePage()
 	}
-}
 }
 </script>
 

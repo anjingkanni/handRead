@@ -20,7 +20,14 @@
 			:bookCount="bookCount"
 			@subtractOneBook="subtractOneBook"
 			@addToCart="addToCart"
+			@toDetailsPage="toDetailsPage"
 		 />
+	 <DetailsPage
+		 :book="detailsPageObj"
+		 :leftSetting="leftSetting"
+		 :isShowDetails="isShowDetails"
+		 @closeDelPage="closeDelPage"
+	 />
 	</div>
 </template>
 
@@ -29,7 +36,6 @@
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="less" scoped>
 	div.main {
-		position: relative;
 		margin: 50px 0 0 0;
 		z-index: 10;
 		padding: 0;

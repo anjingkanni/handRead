@@ -1,12 +1,6 @@
 <template>
 <transition name="slide-fade">
-
-  <div class="details fa fa-angle-left" v-if="isShowDetails" :class="{'left':leftSetting}">
-	  <HeaderComp
-		  :returnicon="returnicon"
-		  :titles="titles"
-		  :optionicon="optionicon"
-	  />
+  <div class="details fa fa-angle-left" v-if="isShowDetails">
     <section>
       <div>
         <img :src="book.img">
@@ -73,6 +67,12 @@
         </div>
       </div>
     </section>
+	  <HeaderComp
+		  :returnicon="returnicon"
+		  :titles="titles"
+		  :optionicon="optionicon"
+		  @hidePage="closePage"
+	  />
   </div>
 </transition>
 </template>
@@ -81,14 +81,14 @@
 	import HeaderComp from './HeaderComp'
 export default {
   name: 'DetailsPage',
-  props:['isShowDetails','leftSetting','book'],
+  props:['isShowDetails','book'],
 	components:{HeaderComp},
   data () {
     return {
 	 objData:[],
 		show:true,
 		//header
-		returnicon: false,
+		returnicon: true,
 		titles: '图书详情',
 		optionicon: false,
     }
@@ -100,7 +100,14 @@ export default {
 			this.objData.push(book);
 			const locaShop = JSON.stringify(this.objData);
 			localStorage.setItem('locaShop',locaShop);
+		},
+		closePage(){
+			this.$emit('closeDetailsPage');
+			this.$emit('closeDelPage');
 		}
+	},
+	mounted(){
+  	this.closePage();
 	}
 }
 </script>
