@@ -32,9 +32,9 @@
       </div>
       <div>
 	  <button type="button" @click="addToCart(book)">加入购物车</button>
-	  <router-link :to="{name:'shoppingcart'}" tag="li">
-		  <button type="button" @click="addToCart(book)">立即购买</button>
-	  </router-link>
+		  <router-link :to="{name:'shoppingcart'}" tag="li" >
+			  <button class="a" type="button" @click="addToCart(book)">立即购买</button>
+		  </router-link>
       </div>
     </section>
 
