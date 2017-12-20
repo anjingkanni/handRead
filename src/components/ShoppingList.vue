@@ -2,7 +2,7 @@
 	<ul>
 		<li v-for="(bookslist,index) in objdatashopping">
 			<div class="dots" v-if="dotsShow">
-				<input name="bookCkd" type="checkbox" v-if="electsShow" @click="$emit('electSplices',index)">
+				<input name="bookCkd" v-model="bookslist.selection" type="checkbox" v-if="electsShow" @change="$emit('electSplices',index,bookslist.selection)">
 
 			</div>
 
@@ -32,7 +32,7 @@
 		data () {
 			return {
 				msg: '首页',
-
+				checkedBook: []
 			}
 		}
 	}

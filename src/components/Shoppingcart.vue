@@ -78,10 +78,9 @@
 			/*点击选中删除*/
 			deleteSelected(){
 				var  conunt = this.arr.length;
-				console.log(conunt)
 				var idxs = 0;
 				while (conunt){
-					if(this.objdatashopping[idxs].checked === true){
+					if(this.objdatashopping[idxs].selection ){
 						this.objdatashopping.splice(idxs,1);
 						conunt--
 					}else {
@@ -90,19 +89,10 @@
 				}
 			},
 			/*点击选中单品*/
-			electSplices(idx){
-				this.objdatashopping[idx].checked = !this.objdatashopping[idx].checked;
-				this.arr.push(idx);
-				if(this.objdatashopping[idx].checked == true){
-					for(var i = 0; i <this.arr.length; i++){
-						if(this.arrNew.indexOf(this.arr[i]) === -1){
-							this.arrNew.push(this.arr[i]);
-						}else{
-							continue;
-						}
-
-					}
-				}
+			electSplices(idx,val){
+				this.arr = this.objdatashopping.filter((bookslist) =>{
+					return bookslist.selection
+				});
 			},
 			getData(){
 				const objdatashop = JSON.parse(localStorage.getItem('locaShop'));
